@@ -5,11 +5,12 @@ This walkthrough will illustrate how to use the OctoML model-optimization platfo
 The OctoML platform automatically produces a downloadable container with your model that is accelerated, configured, and ready to deploy on the hardware target of your choice. You can <a href="https://octoml.ai/">learn more here.</a> 
 
 # Prerequisites
-* The Azure ML CLI
-* OctoML Platform Access<br>
+* <a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli?tabs=public">The Azure CLI (v2) w/ the Azure ML Extension</a>
+* <a href="https://octoml.ai/">OctoML Platform Access</a>
+<br>
 OR
 * The OctoML SDK (platform access token required)
-* Download the OctoML CLI
+* <a href="https://try.octoml.ai/cli/">Download the OctoML CLI</a>
 
 > **_NOTE:_**  While the CLI is available to everyone, an access token is required to get the full benefits of OctoML's model optimization stack. Learn more about the CLI here. 
 
@@ -49,4 +50,4 @@ ACR_IMG_NAME="${ACR_NAME}.azurecr.io/${MODEL_NAME}:latest"
  * From the command line, run `bash azureml_deploy.sh`. This process will take appromixately 20 minutes to complete.
 
 ### 5. Test the Model Service
-Run healthcheck with `python3 run.py --remote
+Run an inferencing test with `python3 run.py --remote`.
