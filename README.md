@@ -7,8 +7,6 @@ The OctoML platform automatically produces a downloadable container with your mo
 # Prerequisites
 * <a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli?tabs=public">The Azure CLI (v2) w/ the Azure ML Extension</a>
 * <a href="https://octoml.ai/">OctoML Platform Access</a>
-<br>
-OR
 * The OctoML SDK (platform access token required)
 * <a href="https://try.octoml.ai/cli/">Download the OctoML CLI</a>
 
