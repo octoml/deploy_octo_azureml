@@ -1,6 +1,5 @@
-
 # Introduction
-This walkthrough will illustrate how to use the OctoML model-optimization platform with the Azure CLI to deploy a model to an <a href="https://learn.microsoft.com/en-us/azure/machine-learning/concept-endpoints"> Azure ML Managed Endpoint </a> in about 30 minutes. 
+This walkthrough illustrates how to use the OctoML model-optimization platform with the Azure CLI to deploy a model to an <a href="https://learn.microsoft.com/en-us/azure/machine-learning/concept-endpoints"> Azure ML Managed Endpoint </a> in about 30 minutes. 
 
 The OctoML platform automatically produces a downloadable container with your model that is accelerated, configured, and ready to deploy on the hardware target of your choice. You can <a href="https://octoml.ai/">learn more here.</a> 
 
@@ -10,14 +9,14 @@ The OctoML platform automatically produces a downloadable container with your mo
 * The OctoML SDK (platform access token required)
 * <a href="https://try.octoml.ai/cli/">Download the OctoML CLI</a>
 
-> **_NOTE:_**  While the CLI is available to everyone, an access token is required to get the full benefits of OctoML's model optimization stack. Learn more about the CLI here. 
+> **_NOTE:_**  While the CLI is publicly available to try, an access token is required to get the full benefits of OctoML's model-optimization stack. Learn more about the CLI here. 
 
 ## Deploy an Optimized Model to an Azure ML Managed Endpoint
 
 <img src="./assets/workflow.png" width="650" height="350"></img>
 
 ### 1. Upload and Optimize a Model
-From the Explore UI page, upload a model in an ONNX, Pytorch, Tensorflow, or SciKit model format. Click the Explore button to continue to the model optimization workflow settings page.
+From the Explore UI page, upload a model in an ONNX, Pytorch, Tensorflow, or SciKit model format. Click the *Explore* button to continue to the model optimization workflow settings page.
 
 ### 2. Explore Cloud Cost Savings
 * In the next page, select the hardware targets you would like to explore potential performance and cost savings. 
