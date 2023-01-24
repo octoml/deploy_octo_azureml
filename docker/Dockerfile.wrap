@@ -1,0 +1,4 @@
+FROM tmp_octo_img_name:latest
+
+#Wraps the pre-built octoml image to start tritonserver
+CMD tritonserver --model-repository=/models
