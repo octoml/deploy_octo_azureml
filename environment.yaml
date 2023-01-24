@@ -1,0 +1,12 @@
+name: octo_aml
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - tritonclient
+  - pillow
+  - requests
+  - gevent
+  - matplotlib
+  - scipy
+prefix: /Users/iansawicki/miniforge3/envs/octo_aml

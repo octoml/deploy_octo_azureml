@@ -13,7 +13,7 @@ The OctoML platform automatically produces a downloadable container with your mo
 
 ## Deploy an Optimized Model to an Azure ML Managed Endpoint
 
-<img src="./assets/workflow.png" width="650" height="350"></img>
+<img src="workflow.png" width="650" height="350"></img>
 
 ### 1. Upload and Optimize a Model
 From the Explore UI page, upload a model in an ONNX, Pytorch, Tensorflow, or SciKit model format. Click the *Explore* button to continue to the model optimization workflow settings page.

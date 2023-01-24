@@ -1,11 +1,11 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
-name: octoml-resnet50-dep-5
+name: {{DEPLOYMENT_NAME}}
 endpoint_name: octoml-triton-endpoint
 model: 
-  path: ./models/resnet50_v1_12 # Local models
+  path: ./models/{{MODEL_NAME}} # Local models
 model_mount_path: /models # Container model registry
 environment: 
-  name: az-triton-test-env
+  name: octoml-model-dep-test
   image: {{ACR_IMG_NAME}} #need to update
 
   inference_config:
@@ -18,5 +18,5 @@ environment:
       scoring_route:
           path: /
           port: 8000
-instance_type: Standard_DS4_v2
+instance_type: {{INSTANCE_TYPE}}
 instance_count: 1
