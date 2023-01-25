@@ -10,7 +10,7 @@ RESOURCE_GRP=isawicki-rg
 WORKSPACE_NAME=octoml-gtm
 
 # Model parameters
-MODEL_NAME=resnet50-v1-12
+MODEL_NAME=resnet50_v2_7_onnx
 TARBALL_NAME=resnet50_v2_7_onnx.tar.gz
 
 # Azure Container Registry parameters
@@ -41,18 +41,19 @@ cleanup () {
 
 ##### Create AzureML Online Endpoint #####
 echo "Creating Azure ML Managed Endpoint ${ENDPOINT_NAME}"
-endpoint_status=$(az ml online-endpoint list --query "[?name == \`${ENDPOINT_NAME}\`] | [0].provisioning_state")   
-
+endpoint_status="$(az ml online-endpoint list --query "[?name == \`${ENDPOINT_NAME}\`] | [0].provisioning_state" -o tsv)"  
+echo $endpoint_status
 # Create AzureML Online Endpoint
-if [[ ${endpoint_status} == "Succeeded" ]]
+if [[ $endpoint_status == "Succeeded" ]]
 then
   echo "Endpoint created successfully"
 else
   echo "Creating endpoint ${ENDPOINT_NAME}"
   change_vars $BASE_PATH/endpoint.yaml
-  cat $BASE_PATH/endpoint.yaml
-  az ml online-endpoint create -f endpoint_.yaml
+  cat $BASE_PATH/endpoint_.yaml_
+  az ml online-endpoint create -f endpoint.yaml_
 fi
+
 
 ##### END Create AzureML Online Endpoint #####
 
@@ -75,7 +76,7 @@ bash build.sh tmp_octo_img_name:latest
 # Tag OctoML Model Container
 MODEL_NAME_=$(echo "${MODEL_NAME}" | sed -e 's/-/_/g')
 INSTANCE_TYPE_=$(echo "${INSTANCE_TYPE}" | sed -e 's/Standard_//g')
-ACR_IMG_NAME="$ACR_NAME.azurecr.io/${MODEL_NAME_}:${INSTANCE_TYPE_}:latest"
+ACR_IMG_NAME="$ACR_NAME.azurecr.io/${MODEL_NAME_}:latest"
 
 # Rebuilds container to include CMD to start Triton server.
 docker build -t $ACR_IMG_NAME -f $BASE_PATH/Dockerfile.wrap .
@@ -107,15 +108,13 @@ change_vars $BASE_PATH/deployment.yaml
 cat $BASE_PATH/deployment.yaml 
 
 
-az ml online-deployment create -f $BASE_PATH/deployment.yaml_ --all-traffic
-deploy_status=`az ml online-deployment show --name octo-buildflagchg-1 --endpoint $ENDPOINT_NAME --query "provisioning_state" -o tsv`
-echo $deploy_status
+deploy_status=`az ml online-deployment show --name $DEPLOYMENT_NAME --endpoint $ENDPOINT_NAME --query "provisioning_state" -o tsv`
 if [[ $deploy_status == "Succeeded" ]]
 then
   echo "Deployment completed successfully"
 else
-  echo "Deployment failed"
-  exit 1
+  echo "Creating deployment ${DEPLOYMENT_NAME}"
+  az ml online-deployment create -f $BASE_PATH/deployment.yaml_ --all-traffic
 fi
 ##### END Create AzureML Deployment - deploys OctoML Triton Container & Optimized Model #####
 

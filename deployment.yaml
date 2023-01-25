@@ -2,7 +2,7 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: {{DEPLOYMENT_NAME}}
 endpoint_name: octoml-triton-endpoint
 model: 
-  path: ./models/{{MODEL_NAME}} # Local models
+  path: ./models/{{MODEL_NAME_}} # Local models
 model_mount_path: /models # Container model registry
 environment: 
   name: octoml-model-dep-test
