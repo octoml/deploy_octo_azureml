@@ -57,9 +57,11 @@ INSTANCE_TYPE=<your-endpoints-instance-type> # e.g. Standard_DS4_v2
 
 Run an inferencing test with `python3 run.py --remote`.
 
-> **_NOTE:_** To use `run.py` you must install the python packages in the `environment.yaml` file:
+> **_NOTE:_** To use `run.py` you must install the python packages in the `environment.yaml` file and tritonclient:
 ```bash
 conda create env -f environment.yaml
+conda activate octo_aml
+pip3 install tritonclient[all]
 ```
 This will create a clean conda environment called `octo_aml`.
 

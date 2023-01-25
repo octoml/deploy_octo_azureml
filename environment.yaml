@@ -3,10 +3,11 @@ channels:
   - conda-forge
 dependencies:
   - numpy
-  - tritonclient
+  - pip
   - pillow
   - requests
   - gevent
   - matplotlib
   - scipy
+  - grpcio==1.36.1
 prefix: /Users/iansawicki/miniforge3/envs/octo_aml
