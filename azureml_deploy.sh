@@ -79,7 +79,7 @@ INSTANCE_TYPE_=$(echo "${INSTANCE_TYPE}" | sed -e 's/Standard_//g')
 ACR_IMG_NAME="$ACR_NAME.azurecr.io/${MODEL_NAME_}:latest"
 
 # Rebuilds container to include CMD to start Triton server.
-docker build -t $ACR_IMG_NAME -f $BASE_PATH/Dockerfile.wrap .
+docker build -t $ACR_IMG_NAME -f $BASE_PATH/docker/Dockerfile.wrap .
 ##### END Inflate OctoML Optimized Model Artifact #####
 
 
